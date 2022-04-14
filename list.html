@@ -17,31 +17,71 @@
 
 　　　}
   .mgr-10{
-    margin-left:20px;
+    margin-left:5px;
     margin-rihgt:20px;
-    margin-bottom:400px;
+    margin
+
   }
+  .container {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr) ;
+  grid-gap: 4px;
+  
+  }
+
+  .form {
+    grid-column: 2/14;
+    
+  }
+  .choice{
+    margin : 6px ;
+  }
+  .radio-label{
+    
+  }
+  input[type="radio"] {
+  display: none;
+  }
+  input[type="radio"]:not(:checked){
+  border-color: #FFFFFF;
+  }
+  input[type="radio"]:checked{
+  border-color: #ffa000;
+  background-color: #ffa000;
+  }
+
+
+  
+  
  
     </style>
   </head>
   <body>
 
     <a href="https://docs.google.com/spreadsheets/d/1VdpngPLPJsKT0Z0jugzseTR1mm8wMzzuIoIaafwYLOc/edit#gid=1017338485" target="_blank">データソース</a>
-    
+    <div class="container">
+      <div class = "form">
+
     <form id="answers">
     <? for(let i = 1; i <11; i++){ ?>
       <? let link = []; ?>
-      <? for(let t = 1; t < 5; t++){ ?>
+      <? let problem = Math.floor( Math.random() * links.length ); ?>
+      <? link.push(links[problem][1]); ?>
+
+      <? for(let t = 1; t < 4; t++){ ?>
+      
 
       <? let random = Math.floor( Math.random() * links.length ); ?>
       <? link.push(links[random][1]); ?>
       
       <? } ?>
       <? let linkrandom = arrayShuffle(link); ?>
-      
+      <h3 class="problemtitle"><?= links[problem][0] ?></h3>
       <? for(let j = 0; j <= 3; j++){ ?>
-      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"><span class="mgr-10"><?= linkrandom[j] ?></span>
-      
+      <label class="radio-label">
+      <input type="radio" name="Q<?= i ?>" value="<?= j ?>" class="choice" ><span class="mgr-10"><?= linkrandom[j] ?></span>
+      </label>
+      <br>
       <? } ?>
       <br>
       <br>
@@ -49,6 +89,6 @@
 
 
     </form>
-
-
+    </div>
+    </div>
 </html>
