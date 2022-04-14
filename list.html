@@ -36,32 +36,32 @@
   .choice{
     margin : 6px ;
   }
-  .radio-label{
-    display:block;
-  }
   input[type="radio"] {
   display: none;
   }
-  input[type="radio"]:not(:checked)+ .radio-text:before{
+  .radio-label{
+    display:block;
+  }
+  
+  input[type="radio"]:not(:checked) + .radio-text:before{
   border-color: #FFFFFF;
   }
-  input[type="radio"]:checked+ .radio-text:before{
-  border-color: #ffa000;
-  background-color: #ffa000;
+  input[type="radio"]:checked + .radio-text:before{
+  border-color: #4cff8b;
+  background-color: #4cff8b;
   }
   .radio-text:before {
   content: "";
   display: inline-block;
-  width: 8px;
-  height: 8px;
+  width: 14px;
+  height: 14px;
   margin-right: 6px;
-  border-width: 1px;
+  border-width: 2px;
   border-style: solid;
   border-radius: 50%;
   padding: 2px;
   background-clip: content-box;
   }
-
 
   
   
@@ -89,12 +89,24 @@
       <? } ?>
       <? let linkrandom = arrayShuffle(link); ?>
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
-      <? for(let j = 0; j <= 3; j++){ ?>
+     
       <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="<?= j ?>" class="choice" ><span class="mgr-10"><span class="radio-text"><?= linkrandom[j] ?></span></span>
+      <input type="radio" name="Q<?= i ?>" value="0 " class="choice"><span class="radio-text"><?= linkrandom[0] ?></span></span>
       </label>
       <br>
-      <? } ?>
+      <label class="radio-label">
+      <input type="radio" name="Q<?= i ?>" value="1" class="choice" ><span class="radio-text"><?= linkrandom[1] ?></span></span>
+      </label>
+      <br>
+      <label class="radio-label">
+      <input type="radio" name="Q<?= i ?>" value="2" class="choice" ><span class="radio-text"><?= linkrandom[2] ?></span></span>
+      </label>
+      <br>
+      <label class="radio-label">
+      <input type="radio" name="Q<?= i ?>" value="3" class="choice" ><span class="radio-text"><?= linkrandom[3] ?></span></span>
+      </label>
+      <br>
+
       <br>
       <br>
       <? } ?>
