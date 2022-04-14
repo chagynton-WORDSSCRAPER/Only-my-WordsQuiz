@@ -55,7 +55,8 @@
   display: inline-block;
   width: 14px;
   height: 14px;
-  margin-right: 6px;
+  margin-right: 10px;
+  margin-bottom: -4px;
   border-width: 2px;
   border-style: solid;
   border-radius: 50%;
@@ -90,22 +91,12 @@
       <? let linkrandom = arrayShuffle(link); ?>
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      
+      <? for(let j = 0; j <= 3; j++){ ?>
       <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="0 " class="choice"><span class="radio-text"><?= linkrandom[0] ?></span></span>
+      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"><span class="radio-text"><?= linkrandom[j] ?></span>
       </label>
       <br>
-      <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="1" class="choice" ><span class="radio-text"><?= linkrandom[1] ?></span></span>
-      </label>
-      <br>
-      <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="2" class="choice" ><span class="radio-text"><?= linkrandom[2] ?></span></span>
-      </label>
-      <br>
-      <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="3" class="choice" ><span class="radio-text"><?= linkrandom[3] ?></span></span>
-      </label>
-      <br>
+      <? } ?>
 
       <br>
       <br>
