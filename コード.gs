@@ -1,12 +1,10 @@
-// (1) リクエストを受け取ると doGet が実行される
+
 function doGet(e) {
   let sheet = SpreadsheetApp.getActive().getActiveSheet();
   let values = sheet.getDataRange().getValues();
 
-  // (2) Spreadsheet からデータを読み込む
-  // (3) テンプレートを使ってHTML文書を作って return
   let template = HtmlService.createTemplateFromFile("list");
-  template.links = values; // こうしておくとテンプレートの方で links という変数に値が入った状態で使える
+  template.links = values; 
   return template.evaluate();
 
   }
