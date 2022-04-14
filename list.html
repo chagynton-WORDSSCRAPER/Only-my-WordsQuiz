@@ -37,17 +37,29 @@
     margin : 6px ;
   }
   .radio-label{
-    
+    display:block;
   }
   input[type="radio"] {
   display: none;
   }
-  input[type="radio"]:not(:checked){
+  input[type="radio"]:not(:checked)+ .radio-text:before{
   border-color: #FFFFFF;
   }
-  input[type="radio"]:checked{
+  input[type="radio"]:checked+ .radio-text:before{
   border-color: #ffa000;
   background-color: #ffa000;
+  }
+  .radio-text:before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  padding: 2px;
+  background-clip: content-box;
   }
 
 
@@ -79,7 +91,7 @@
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
       <? for(let j = 0; j <= 3; j++){ ?>
       <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="<?= j ?>" class="choice" ><span class="mgr-10"><?= linkrandom[j] ?></span>
+      <input type="radio" name="Q<?= i ?>" value="<?= j ?>" class="choice" ><span class="mgr-10"><span class="radio-text"><?= linkrandom[j] ?></span></span>
       </label>
       <br>
       <? } ?>
