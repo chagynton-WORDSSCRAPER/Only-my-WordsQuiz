@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        background-color: f3f3f3;
+        font-family: sans-serif ;
+            }
+      @media (prefers-color-scheme: dark) {
+  body {
+    background-color: #242322;
+    color: #ebebeb;
+    }
+  a{color: #4cff8b}
+
+　　　}
+  .mgr-10{
+    margin-left:20px;
+    margin-rihgt:20px;
+    margin-bottom:400px;
+  }
+ 
+    </style>
+  </head>
+  <body>
+
+    <a href="https://docs.google.com/spreadsheets/d/1VdpngPLPJsKT0Z0jugzseTR1mm8wMzzuIoIaafwYLOc/edit#gid=1017338485" target="_blank">データソース</a>
+    
+    <form id="answers">
+    <? for(let i = 1; i <11; i++){ ?>
+      <? let link = []; ?>
+      <? for(let t = 1; t < 5; t++){ ?>
+
+      <? let random = Math.floor( Math.random() * links.length ); ?>
+      <? link.push(links[random][1]); ?>
+      
+      <? } ?>
+      <? let linkrandom = arrayShuffle(link); ?>
+      
+      <? for(let j = 0; j <= 3; j++){ ?>
+      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"><span class="mgr-10"><?= linkrandom[j] ?></span>
+      
+      <? } ?>
+      <br>
+      <br>
+      <? } ?>
+
+
+    </form>
+
+
+</html>
