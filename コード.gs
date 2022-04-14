@@ -2,11 +2,9 @@
 function doGet(e) {
   let sheet = SpreadsheetApp.getActive().getActiveSheet();
   let values = sheet.getDataRange().getValues();
-
   let template = HtmlService.createTemplateFromFile("list");
   template.links = values; 
   return template.evaluate();
-
   }
 
 function arrayShuffle(array) {
