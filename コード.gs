@@ -2,6 +2,7 @@
 function doGet(e) {
   let sheet = SpreadsheetApp.getActive().getActiveSheet();
   let values = sheet.getDataRange().getValues();
+  
   let template = HtmlService.createTemplateFromFile("list");
   template.links = values; 
   return template.evaluate();
@@ -40,4 +41,15 @@ function arrayShuffle(array) {
         };
       }
 
+function AnswersCheck(answers){
+  let sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); 
+  let lastRow = sheet.getLastRow();
+  let values = sheet.getDataRange().getValues();
+  let n = 0;
+
+  for(let i = 1; i < 11; i++ ){
+    let answer = values[lastRow-1][i-1];
+    let input = answers["Q" + i].value;
+    if(answer == input){ n++;}
+    }return n;}
 

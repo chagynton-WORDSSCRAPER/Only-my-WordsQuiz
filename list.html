@@ -96,6 +96,7 @@
       <? let linkrandom = arr; ?>
       <? answerNumber.push(anNum); ?>
       <? Logger.log(answerNumber+"a"); ?>
+      <? Logger.log(arr+"c"); ?>
 
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      
@@ -115,29 +116,20 @@
     </form>
     </div>
     </div>
+    <?　let sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); ?>
+    <? sheet.appendRow(answerNumber); ?>
     <button style="margin-top: 32px" onclick="sendAnswers()">回答を送信</button>
   </body>
     <script>
-
-  let n = 0;
+  
   function sendAnswers(){
-  for(let i = 1; i < 11; i++){
   
     let answers = document.getElementById("answers");
-    let input = answers["Q" + i]; 
-    let answer = answerNumber[i-1];
-    if(input==answer)n++;
-    
-  }
+    google.script.run.withSuccessHandler(success).AnswersCheck(answers);
   }
 
   function success(n){
-    alert(n + "問正解でした！");
-  }
-
-  function result(){
-    sendAnswers();
-    success();
+    document.write(n + "問正解でした！");
   }
   </script>
 </html>
