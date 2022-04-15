@@ -75,12 +75,13 @@
       <div class = "form">
 
     <form id="answers">
+    <? let answerNumber = []; ?>
     <? for(let i = 1; i <11; i++){ ?>
       <? let link = []; ?>
 
       <? let problem = Math.floor( Math.random() * links.length ); ?>
       <? link.push(links[problem][1]); ?>
-      <? let answerNumber = []; ?>
+      
 
 
       <? for(let t = 1; t < 4; t++){ ?>
@@ -91,9 +92,10 @@
       
       <? } ?>
       <? let {arr, anNum} = arrayShuffle(link); ?>
+      <? Logger.log(anNum+"b"); ?>
       <? let linkrandom = arr; ?>
       <? answerNumber.push(anNum); ?>
-      
+      <? Logger.log(answerNumber+"a"); ?>
 
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      

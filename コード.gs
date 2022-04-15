@@ -8,7 +8,10 @@ function doGet(e) {
   }
 
 function arrayShuffle(array) {
-      array0 = array
+      let array0 = array.slice();
+      Logger.log(array);
+      Logger.log(array0);
+      
       let n = 0
       for(let i = (array.length-1); i > 0  ; i--){
         let r = Math.floor(Math.random() * (i+1));
@@ -17,9 +20,16 @@ function arrayShuffle(array) {
         array[i] = array[r];
         array[r] = tmp;
         }
-      for(let i = 0; i > 4; i++ ){
-        if(array[i]==array0[0]){
-          n = i;
+
+      Logger.log(array0[0]);
+      
+      for(let j = 0; j < 4; j++ ){
+        Logger.log(array[j]);
+        if(array[j]==array0[0]){
+          n = j;
+          Logger.log("一致");
+        }else{
+          Logger.log("不一致");
         }
         Logger.log(n);
         
