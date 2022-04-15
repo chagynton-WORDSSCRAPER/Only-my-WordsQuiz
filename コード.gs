@@ -22,7 +22,12 @@ function arrayShuffle(array) {
           n = i;
         }
         Logger.log(n);
-        return [array,n];
-      }}
+        
+      }
+      return{
+          arr:array,
+          anNum:n
+        };
+      }
 
 

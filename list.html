@@ -90,9 +90,10 @@
       <? link.push(links[random][1]); ?>
       
       <? } ?>
-      <? let linkrandomAndAnswer = arrayShuffle(link); ?>
-      <? let linkrandom = linkrandomAndAnswer[0]; ?>
-      <? answerNumber.push（linkrandomAndAnswer[1]); ?>
+      <? let {arr, anNum} = arrayShuffle(link); ?>
+      <? let linkrandom = arr; ?>
+      <? answerNumber.push(anNum); ?>
+      
 
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      
@@ -105,8 +106,9 @@
 
       <br>
       <br>
+      <? Logger.log(answerNumber+"a"); ?>
       <? } ?>
-
+      
 
     </form>
     </div>
