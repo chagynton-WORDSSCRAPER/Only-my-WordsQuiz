@@ -8,6 +8,8 @@ function doGet(e) {
   }
 
 function arrayShuffle(array) {
+      array0 = array
+      let n = 0
       for(let i = (array.length-1); i > 0  ; i--){
         let r = Math.floor(Math.random() * (i+1));
         let tmp = array[i];
@@ -15,5 +17,12 @@ function arrayShuffle(array) {
         array[i] = array[r];
         array[r] = tmp;
         }
-        return array;
-      }
+      for(let i = 0; i > 4; i++ ){
+        if(array[i]==array0[0]){
+          n = i;
+        }
+        Logger.log(n);
+        return [array,n];
+      }}
+
+

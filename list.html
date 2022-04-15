@@ -77,8 +77,11 @@
     <form id="answers">
     <? for(let i = 1; i <11; i++){ ?>
       <? let link = []; ?>
+
       <? let problem = Math.floor( Math.random() * links.length ); ?>
       <? link.push(links[problem][1]); ?>
+      <? let answerNumber = []; ?>
+
 
       <? for(let t = 1; t < 4; t++){ ?>
       
@@ -87,12 +90,15 @@
       <? link.push(links[random][1]); ?>
       
       <? } ?>
-      <? let linkrandom = arrayShuffle(link); ?>
+      <? let linkrandomAndAnswer = arrayShuffle(link); ?>
+      <? let linkrandom = linkrandomAndAnswer[0]; ?>
+      <? answerNumber.push（linkrandomAndAnswer[1]); ?>
+
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      
       <? for(let j = 0; j <= 3; j++){ ?>
       <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"　onclick="ask(event)"><span class="radio-text"><?= linkrandom[j] ?></span>
+      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"><span class="radio-text"><?= linkrandom[j] ?></span>
       </label>
       <br>
       <? } ?>
@@ -105,4 +111,29 @@
     </form>
     </div>
     </div>
+    <button style="margin-top: 32px" onclick="sendAnswers()">回答を送信</button>
+  </body>
+    <script>
+
+  let n = 0;
+  function sendAnswers(){
+  for(let i = 1; i < 11; i++){
+  
+    let answers = document.getElementById("answers");
+    let input = answers["Q" + i]; 
+    let answer = answerNumber[i-1];
+    if(input==answer)n++;
+    
+  }
+  }
+
+  function success(n){
+    alert(n + "問正解でした！");
+  }
+
+  function result(){
+    sendAnswers();
+    success();
+  }
+  </script>
 </html>
