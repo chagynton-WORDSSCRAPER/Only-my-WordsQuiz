@@ -1,5 +1,6 @@
 
 function doGet(e) {
+  
   let page = e.parameter.p;
   let sheet = SpreadsheetApp.getActive().getActiveSheet();
   let values = sheet.getDataRange().getValues();
@@ -13,6 +14,7 @@ function doGet(e) {
   template.links = values; // こうしておくとテンプレートの方で links という変数に値が入った状態で使える
   return template.evaluate()
   .setTitle("ページ遷移");
+  
   }
 }
 function arrayShuffle(array) {
