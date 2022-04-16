@@ -4,18 +4,9 @@ function doGet(e) {
   let page = e.parameter.p;
   let sheet = SpreadsheetApp.getActive().getActiveSheet();
   let values = sheet.getDataRange().getValues();
-  if(page==null){
   let template = HtmlService.createTemplateFromFile("list");
   template.links = values; 
   return template.evaluate().setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-  }
-  else if(page == "result"){
-  let template = HtmlService.createTemplateFromFile("result");
-  template.links = values; // こうしておくとテンプレートの方で links という変数に値が入った状態で使える
-  return template.evaluate()
-  .setTitle("ページ遷移");
-  
-  }
 }
 function arrayShuffle(array) {
       let array0 = array.slice();
