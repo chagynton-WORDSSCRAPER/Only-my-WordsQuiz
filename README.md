@@ -11,4 +11,4 @@
 2. Pick its Japanese meanings and three other meanings from one column(meaning column) in a random way 
 3. Randomize four meanings order.
 4. repeat 10 times.
-5. diplay in words test form.
+5. diplay in html test form.
