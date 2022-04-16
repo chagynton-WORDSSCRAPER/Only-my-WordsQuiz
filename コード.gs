@@ -1,13 +1,20 @@
 
 function doGet(e) {
+  let page = e.parameter.p;
   let sheet = SpreadsheetApp.getActive().getActiveSheet();
   let values = sheet.getDataRange().getValues();
-  
+  if(page==null){
   let template = HtmlService.createTemplateFromFile("list");
   template.links = values; 
   return template.evaluate();
   }
-
+  else if(page == "problem1"){
+  let template = HtmlService.createTemplateFromFile("result");
+  template.links = values; // こうしておくとテンプレートの方で links という変数に値が入った状態で使える
+  return template.evaluate()
+  .setTitle("ページ遷移");
+  }
+}
 function arrayShuffle(array) {
       let array0 = array.slice();
       Logger.log(array);
@@ -42,14 +49,15 @@ function arrayShuffle(array) {
       }
 
 function AnswersCheck(answers){
-  let sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); 
-  let lastRow = sheet.getLastRow();
-  let values = sheet.getDataRange().getValues();
-  let n = 0;
-
+  var sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); 
+  var lastRow = sheet.getLastRow();
+  var values = sheet.getDataRange().getValues();
+  var n = 0;
   for(let i = 1; i < 11; i++ ){
-    let answer = values[lastRow-1][i-1];
-    let input = answers["Q" + i].value;
-    if(answer == input){ n++;}
-    }return n;}
+    var correctChoice = values[lastRow-1][i-1];
+    var input = answers["Q"+i];
+    
+    if(input == correctChoice)n++;
+
+        }return n;}
 

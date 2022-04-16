@@ -62,6 +62,17 @@
   padding: 2px;
   background-clip: content-box;
   }
+  button{
+    display:grid;
+    grid-column:3/5;
+    width: 120px;
+    height: 40px;
+    margin-bottom:40px;
+    background-color:#FFFFFF;
+    color: #000000;
+    text-align: center;
+    
+  }
 
   
   
@@ -92,15 +103,12 @@
       
       <? } ?>
       <? let {arr, anNum} = arrayShuffle(link); ?>
-      <? Logger.log(anNum+"b"); ?>
       <? let linkrandom = arr; ?>
       <? answerNumber.push(anNum); ?>
-      <? Logger.log(answerNumber+"a"); ?>
-      <? Logger.log(arr+"c"); ?>
 
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      
-      <? for(let j = 0; j <= 3; j++){ ?>
+      <? for(let j = 0; j < 4; j++){ ?>
       <label class="radio-label">
       <input type="radio" name="Q<?= i ?>" value="<?= j ?>"><span class="radio-text"><?= linkrandom[j] ?></span>
       </label>
@@ -109,16 +117,17 @@
 
       <br>
       <br>
-      <? Logger.log(answerNumber+"a"); ?>
       <? } ?>
       
 
     </form>
+    <button style="margin-top: 32px" onclick="sendAnswers()" >回答を送信</button>
     </div>
+ 
     </div>
     <?　let sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); ?>
     <? sheet.appendRow(answerNumber); ?>
-    <button style="margin-top: 32px" onclick="sendAnswers()">回答を送信</button>
+    
   </body>
     <script>
   
@@ -129,7 +138,11 @@
   }
 
   function success(n){
-    document.write(n + "問正解でした！");
-  }
-  </script>
+    if(n<10){
+    alert(n + "問正解!いいね正解");
+  }else　if(10<=n){
+    alert(n+ "問正解！？、、解いてくれてほんとにありがとう！！");
+  }else{;}}
+    </script>
+  
 </html>
