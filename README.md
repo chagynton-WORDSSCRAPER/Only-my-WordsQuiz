@@ -8,7 +8,7 @@
 This is GAS web application for english word test in Japanese.
 What this done 
 1. Pick a word from one certain column(English words) in a random way
-2. Pick four Japanese meanings from one column(meaning row)in a random way.
+2. Pick four Japanese meanings from one column(meaning column)in a random way.
 3. Randomize four meanings order.
 4. repeat 10 times.
 5. diplay in words test form.
