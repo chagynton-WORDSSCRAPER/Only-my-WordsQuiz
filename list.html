@@ -73,26 +73,24 @@
     text-align: center;
     
   }
-
-  
   
  
     </style>
   </head>
   <body>
-
     <a href="https://docs.google.com/spreadsheets/d/1VdpngPLPJsKT0Z0jugzseTR1mm8wMzzuIoIaafwYLOc/edit#gid=1017338485" target="_blank">データソース</a>
     <div class="container">
       <div class = "form">
 
     <form id="answers">
     <? let answerNumber = []; ?>
+    <? let problemWordNumber = []; ?>
     <? for(let i = 1; i <11; i++){ ?>
       <? let link = []; ?>
 
       <? let problem = Math.floor( Math.random() * links.length ); ?>
       <? link.push(links[problem][1]); ?>
-      
+      <? problemWordNumber.push(problem) ; ?>
 
 
       <? for(let t = 1; t < 4; t++){ ?>
@@ -121,15 +119,41 @@
       
 
     </form>
-    <button style="margin-top: 32px" onclick="sendAnswers()" >回答を送信</button>
+    <script>
+      window.addEventListener('load', function() {
+
+         document.getElementById("hiddentable").style.display ="none";
+
+         })
+    </script>
+
+    <table border="1"style="border-collapse: collapse" id = "hiddentable">
+      <tr><th>単語</th><th>語義</th><th>大区分</th><th>場面</th></tr>
+      <? for(let i = 0; i < 10; i++){ ?>
+      <? let random = Math.floor( Math.random() * links.length ); ?>
+      <? let link = links[problemWordNumber[i]]; ?>
+      <tr><td><?= link[0] ?></td><td><?= link[1] ?></td><td><?= link[2] ?></td><td><?= link[3] ?></td></tr>
+      <? } ?>
+     </table>
+
     </div>
+    
+    <button style="margin-top: 32px" onclick="sendAnswers();tableDisplay()" >回答を送信</button>
+
+    
  
     </div>
+
     <?　let sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); ?>
     <? sheet.appendRow(answerNumber); ?>
     
+    
   </body>
-    <script>
+  <script>
+  
+
+
+  
   
   function sendAnswers(){
   
@@ -142,7 +166,18 @@
     alert(n + "問正解!いいね正解");
   }else　if(10<=n){
     alert(n+ "問正解！？、、解いてくれてほんとにありがとう！！");
-  }else{;}}
+  }else{;
+        
+        }
+
+         }
+  function tableDisplay() {
+
+         document.getElementById("hiddentable").style.display ="block";
+
+         }
+  
     </script>
+
   
 </html>
