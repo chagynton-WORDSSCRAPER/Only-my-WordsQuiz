@@ -62,6 +62,17 @@
   padding: 2px;
   background-clip: content-box;
   }
+  button{
+    display:grid;
+    grid-column:3/5;
+    width: 120px;
+    height: 40px;
+    margin-bottom:40px;
+    background-color:#FFFFFF;
+    color: #000000;
+    text-align: center;
+    
+  }
 
   
   
@@ -75,10 +86,14 @@
       <div class = "form">
 
     <form id="answers">
+    <? let answerNumber = []; ?>
     <? for(let i = 1; i <11; i++){ ?>
       <? let link = []; ?>
+
       <? let problem = Math.floor( Math.random() * links.length ); ?>
       <? link.push(links[problem][1]); ?>
+      
+
 
       <? for(let t = 1; t < 4; t++){ ?>
       
@@ -87,12 +102,15 @@
       <? link.push(links[random][1]); ?>
       
       <? } ?>
-      <? let linkrandom = arrayShuffle(link); ?>
+      <? let {arr, anNum} = arrayShuffle(link); ?>
+      <? let linkrandom = arr; ?>
+      <? answerNumber.push(anNum); ?>
+
       <h3 class="problemtitle"><?= links[problem][0] ?></h3>
      
-      <? for(let j = 0; j <= 3; j++){ ?>
+      <? for(let j = 0; j < 4; j++){ ?>
       <label class="radio-label">
-      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"　onclick="ask(event)"><span class="radio-text"><?= linkrandom[j] ?></span>
+      <input type="radio" name="Q<?= i ?>" value="<?= j ?>"><span class="radio-text"><?= linkrandom[j] ?></span>
       </label>
       <br>
       <? } ?>
@@ -100,9 +118,31 @@
       <br>
       <br>
       <? } ?>
-
+      
 
     </form>
+    <button style="margin-top: 32px" onclick="sendAnswers()" >回答を送信</button>
     </div>
+ 
     </div>
+    <?　let sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); ?>
+    <? sheet.appendRow(answerNumber); ?>
+    
+  </body>
+    <script>
+  
+  function sendAnswers(){
+  
+    let answers = document.getElementById("answers");
+    google.script.run.withSuccessHandler(success).AnswersCheck(answers);
+  }
+
+  function success(n){
+    if(n<10){
+    alert(n + "問正解!いいね正解");
+  }else　if(10<=n){
+    alert(n+ "問正解！？、、解いてくれてほんとにありがとう！！");
+  }else{;}}
+    </script>
+  
 </html>
