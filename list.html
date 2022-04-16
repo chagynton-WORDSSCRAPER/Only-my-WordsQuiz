@@ -87,12 +87,13 @@
 
     <form id="answers">
     <? let answerNumber = []; ?>
+    <? let problemWords = []; ?>
     <? for(let i = 1; i <11; i++){ ?>
       <? let link = []; ?>
 
       <? let problem = Math.floor( Math.random() * links.length ); ?>
       <? link.push(links[problem][1]); ?>
-      
+      <? problemWords.push(problem) ; ?>
 
 
       <? for(let t = 1; t < 4; t++){ ?>
