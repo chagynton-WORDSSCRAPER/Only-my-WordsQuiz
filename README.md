@@ -4,6 +4,7 @@
 - 英字新聞等を読んでいてわからなかった英単語を[Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1AaYm0uiPhyt4wM6tr1-RzLriFuQFImUVaSwnr0lx7Yg/edit?usp=sharing)上に書き留めている
 - その英単語リストで単語クイズを作ってみる試み
 - スプレッドシートなのでGoogle App Scriptをつかっている
+
 This is GAS web application for english word test in Japanese.
 What this done 
 -1 Pick a word from one certain row(English words) in a random way
