@@ -70,7 +70,7 @@ function AnswersCheck2(answers){
     var input = Number(answers["Q"+i]);
     
     if(input === correctChoice){
-        correctedanswers.push(i-1);
+        correctedanswers.push(i);
         }
         
         }return correctedanswers;

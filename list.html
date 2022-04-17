@@ -86,6 +86,9 @@
       text-align: center;
 
     }
+    .tablecolor{
+      background-color:#b83e42;
+    }
   </style>
 </head>
 
@@ -228,7 +231,7 @@
        corNum = correctedanswers;
        for(let i = 0; i<=corNum.length; i++){
           var table = document.getElementById("hiddentable");
-          table.rows[corNum[i]].classList.add("tablecor")
+          table.rows[corNum[i]].classList.add("tablecolor")
        }
 
 
