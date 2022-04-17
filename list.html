@@ -152,7 +152,8 @@
         <? for(let i = 0; i < 10; i++){ ?>
         <? let random = Math.floor( Math.random() * links.length ); ?>
         <? let link = links[problemWordNumber[i]]; ?>
-        <tr id="RowMarker">
+        <? let rowname = "RowMarker"+i;?>
+        <tr class = "rowname">
           <td>
             <?= link[0] ?>
           </td>
@@ -172,7 +173,7 @@
 
     </div>
 
-    <button style="margin-top: 32px" onclick="sendAnswers();tableDisplay();answersCheckforClient();" >回答を送信</button>
+    <button style="margin-top: 32px" onclick="sendAnswers();tableDisplay();" >回答を送信</button>
 
 
 
@@ -186,24 +187,28 @@
 <script>
   function answersCheckforClient(){
     let answers = document.getElementById("answers");
-    let rowSelected = document.getElementById("RowMarker");
+    //let rowSelected = document.getElementById("RowMarker");
     for(let i=0;i<10;i++){
     let correctChoice = Number(answerNumber[i]);
     let input = Number(answers["Q"+i]);
-    if(correctChoice === input){
-      rowSelected[i].classList.add("rowColor");
-    }
+    //if(correctChoice === input){
+      //rowSelected[i].classList.add("rowColor");
+    //}
     }
   }
   function sendAnswers(){
-  
+    let dataObject = {};
     let answers = document.getElementById("answers");
     let rowSelected = document.getElementById("RowMarker");
-    google.script.run.answersCheckforRowcolor(answers,rowSelected);
+    dataObject.value1 = answers;
+    dataObject.value2 = rowSelected;
+    //google.script.run.answersCheckforRowcolor(dataObject);
     google.script.run.withSuccessHandler(success).AnswersCheck(answers);
+    google.script.run.withSuccessHandler(tablecolor).AnswersCheck2(answers);
   }
 
   function success(n){
+ 
     if(n<10){
     alert(n + "問正解!いいね正解");
     }else　if(10<=n){
@@ -218,6 +223,16 @@
          document.getElementById("hiddentable").style.display ="block";
 
          }
+  function tablecolor(correctedanswers){
+       
+       corNum = correctedanswers;
+       for(let i = 0; i<=corNum.length; i++){
+          var table = document.getElementById("hiddentable");
+          table.rows[corNum[i]].classList.add("tablecor")
+       }
+
+
+  }
   
 </script>
 
