@@ -86,8 +86,11 @@
       text-align: center;
 
     }
-    .tablecolor{
-      background-color:#b83e42;
+    .tablecolor1.tablecolor2{
+      background-color:#242322;
+    }
+    .tablecolor1{
+      background-color:#ab2c34;
     }
   </style>
 </head>
@@ -229,9 +232,13 @@
   function tablecolor(correctedanswers){
        
        corNum = correctedanswers;
-       for(let i = 0; i<=corNum.length; i++){
-          var table = document.getElementById("hiddentable");
-          table.rows[corNum[i]].classList.add("tablecolor")
+       var table = document.getElementById("hiddentable");
+       for(let i = 1; i<=10; i++){
+          table.rows[i].classList.add("tablecolor1");
+          
+       }
+       for(let i=0; i<10;i++){
+         table.rows[corNum[i]].classList.add("tablecolor2");
        }
 
 
