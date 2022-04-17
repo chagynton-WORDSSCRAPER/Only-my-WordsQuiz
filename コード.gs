@@ -46,11 +46,50 @@ function AnswersCheck(answers){
   var lastRow = sheet.getLastRow();
   var values = sheet.getDataRange().getValues();
   var n = 0;
+  var correctedanswers = [];
   for(let i = 1; i < 11; i++ ){
     var correctChoice = Number(values[lastRow-1][i-1]);
     var input = Number(answers["Q"+i]);
     
-    if(input === correctChoice)n++;
+    if(input === correctChoice){
+        n++;
+        correctedanswers.push(i-1);
+        }
+        
+        }return n;
+ 
+        }
 
-        }return n;}
+function AnswersCheck2(answers){
+  var sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録"); 
+  var lastRow = sheet.getLastRow();
+  var values = sheet.getDataRange().getValues();
+  var correctedanswers = [];
+  for(let i = 1; i < 11; i++ ){
+    var correctChoice = Number(values[lastRow-1][i-1]);
+    var input = Number(answers["Q"+i]);
+    
+    if(input === correctChoice){
+        correctedanswers.push(i);
+        }
+        
+        }return correctedanswers;
+ 
+        }
+
+function answersCheckforRowcolor(dataObject){
+    var sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録");
+    var lastRow = sheet.getLastRow();
+    var values = sheet.getDataRange().getValues();
+    for(let i=0;i<10;i++){
+    useranswers = dataObject.value1;
+    rowSelected = dataObject.value2;
+    
+    let correctChoice = values[lastRow-1][i-1];
+    let input = useranswers["Q"+i];
+    if(correctChoice == input){
+      rowSelected[i].classList.add("rowColor");
+    }
+    }
+  }
 
