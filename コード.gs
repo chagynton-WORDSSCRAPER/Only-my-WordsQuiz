@@ -54,3 +54,14 @@ function AnswersCheck(answers){
 
         }return n;}
 
+function answersCheckforRowcolor(answers,rowSelected){
+    
+    for(let i=0;i<10;i++){
+    let correctChoice = Number(answerNumber[i]);
+    let input = Number(answers["Q"+i]);
+    if(correctChoice === input){
+      rowSelected[i].classList.add("rowColor");
+    }
+    }
+  }
+
