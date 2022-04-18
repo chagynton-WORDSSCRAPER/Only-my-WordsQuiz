@@ -223,24 +223,13 @@
 
 </body>
 <script>
-  function answersCheckforClient(){
-    let answers = document.getElementById("answers");
-    //let rowSelected = document.getElementById("RowMarker");
-    for(let i=0;i<10;i++){
-    let correctChoice = Number(answerNumber[i]);
-    let input = Number(answers["Q"+i]);
-    //if(correctChoice === input){
-      //rowSelected[i].classList.add("rowColor");
-    //}
-    }
-  }
+
   function sendAnswers(){
     let dataObject = {};
     let answers = document.getElementById("answers");
     let rowSelected = document.getElementById("RowMarker");
     dataObject.value1 = answers;
     dataObject.value2 = rowSelected;
-    //google.script.run.answersCheckforRowcolor(dataObject);
     google.script.run.withSuccessHandler(success).AnswersCheck(answers);
     google.script.run.withSuccessHandler(tablecolor).AnswersCheck2(answers);
   }

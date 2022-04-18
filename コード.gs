@@ -77,19 +77,5 @@ function AnswersCheck2(answers){
  
         }
 
-function answersCheckforRowcolor(dataObject){
-    var sheet = SpreadsheetApp.getActive().getSheetByName("ランダム解答記録");
-    var lastRow = sheet.getLastRow();
-    var values = sheet.getDataRange().getValues();
-    for(let i=0;i<10;i++){
-    useranswers = dataObject.value1;
-    rowSelected = dataObject.value2;
-    
-    let correctChoice = values[lastRow-1][i-1];
-    let input = useranswers["Q"+i];
-    if(correctChoice == input){
-      rowSelected[i].classList.add("rowColor");
-    }
-    }
-  }
+
 
