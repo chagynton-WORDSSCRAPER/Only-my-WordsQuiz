@@ -6,19 +6,38 @@
   <base target="_top">
   <style>
     body {
-      background-color: #E8E3DC;
+      background-color: #e5e5e5;
+      color:#1f1f1f;
       font-family: Noto Sans JP, sans-serif;
     }
 
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #242322;
-        color: #ebebeb;
+        background-color: #242322 !important;
+        color: #ebebeb !important;
       }
 
       a {
         color: #4cff8b
       }
+
+      .tablecolor1.tablecolor2{
+      background-color:#242322 !important;
+      color:#ebebeb !important;
+      }
+      .tablecolor1{
+      background-color:#ab2c34 !important;
+      color:#FFFFFF !important;
+    }
+
+    input[type="radio"]:not(:checked)+.radio-text:before {
+      border-color: #FFFFFF !important;
+    }
+
+    input[type="radio"]:checked+.radio-text:before {
+      border-color: #4cff8b !important;
+      background-color: #4cff8b !important;
+    }
 
     }
 
@@ -53,12 +72,12 @@
     }
 
     input[type="radio"]:not(:checked)+.radio-text:before {
-      border-color: #FFFFFF;
+      border-color: #000000;
     }
 
     input[type="radio"]:checked+.radio-text:before {
-      border-color: #4cff8b;
-      background-color: #4cff8b;
+      border-color: #378452;
+      background-color: #378452;
     }
 
     .radio-text:before {
@@ -78,19 +97,32 @@
     button {
       display: grid;
       grid-column: 3/5;
-      width: 120px;
-      height: 40px;
+      width: 250px;
+      height: 90px;
+      margin-top: 20px;
       margin-bottom: 40px;
-      background-color: #FFFFFF;
+      background-color: #e0e0e0;
       color: #000000;
       text-align: center;
+      
 
     }
+    .buttonStyle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size:150%;
+      font-weight:bold;
+      border-radius:16px;
+      color:#db4343;
+    }
     .tablecolor1.tablecolor2{
-      background-color:#242322;
+      background-color:#e5e5e5;
+      color:#1f1f1f;
     }
     .tablecolor1{
-      background-color:#ab2c34;
+      background-color:#ef4444;
+      color:#FFFFFF;
     }
   </style>
 </head>
@@ -107,7 +139,7 @@
         <? for(let i = 1; i <11; i++){ ?>
         <? let link = []; ?>
 
-        <? let problem = Math.floor( Math.random() * links.length ); ?>
+        <? let problem = Math.floor( (Math.random() * links.length-1)+1 ); ?>
         <? link.push(links[problem][1]); ?>
         <? problemWordNumber.push(problem) ; ?>
 
@@ -115,7 +147,7 @@
         <? for(let t = 1; t < 4; t++){ ?>
 
 
-        <? let random = Math.floor( Math.random() * links.length ); ?>
+        <? let random = Math.floor( (Math.random() * links.length-1)+1 ); ?>
         <? link.push(links[random][1]); ?>
 
         <? } ?>
@@ -179,7 +211,7 @@
 
     </div>
 
-    <button style="margin-top: 32px" onclick="sendAnswers();tableDisplay();" >回答を送信</button>
+    <button class="buttonStyle" onclick="sendAnswers();tableDisplay();" >Answer!</button>
 
 
 
