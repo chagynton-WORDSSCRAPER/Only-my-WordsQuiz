@@ -6,14 +6,15 @@
   <base target="_top">
   <style>
     body {
-      background-color: #E8E3DC;
+      background-color: #e5e5e5;
+      color:#1f1f1f;
       font-family: Noto Sans JP, sans-serif;
     }
 
     @media (prefers-color-scheme: dark) {
       body {
-        background-color: #242322;
-        color: #ebebeb;
+        background-color: #242322 !important;
+        color: #ebebeb !important;
       }
 
       a {
@@ -21,11 +22,12 @@
       }
 
       .tablecolor1.tablecolor2{
-      background-color:#242322;
+      background-color:#242322 !important;
+      color:#ebebeb !important;
       }
       .tablecolor1{
-      background-color:#ab2c34;
-      color:#FFFFFF;
+      background-color:#ab2c34 !important;
+      color:#FFFFFF !important;
     }
 
     input[type="radio"]:not(:checked)+.radio-text:before {
@@ -115,10 +117,11 @@
       color:#db4343;
     }
     .tablecolor1.tablecolor2{
-      background-color:#242322;
+      background-color:#e5e5e5;
+      color:#1f1f1f;
     }
     .tablecolor1{
-      background-color:#ab2c34;
+      background-color:#ef4444;
       color:#FFFFFF;
     }
   </style>
@@ -136,7 +139,7 @@
         <? for(let i = 1; i <11; i++){ ?>
         <? let link = []; ?>
 
-        <? let problem = Math.floor( Math.random() * links.length ); ?>
+        <? let problem = Math.floor( (Math.random() * links.length-1)+1 ); ?>
         <? link.push(links[problem][1]); ?>
         <? problemWordNumber.push(problem) ; ?>
 
@@ -144,7 +147,7 @@
         <? for(let t = 1; t < 4; t++){ ?>
 
 
-        <? let random = Math.floor( Math.random() * links.length ); ?>
+        <? let random = Math.floor( (Math.random() * links.length-1)+1 ); ?>
         <? link.push(links[random][1]); ?>
 
         <? } ?>
