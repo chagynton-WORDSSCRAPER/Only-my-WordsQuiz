@@ -11,7 +11,7 @@
 1. Pick a word from one certain column(English words) in a random way.
 2. Pick its Japanese meanings and three other meanings from one column(meaning column) in a random way.
 3. Randomize four meanings order.
-4. repeat 10 times.
-5. diplay in html test form.
-6. display answer table after clicking answer button.
-7. mark wronged words in table with red color
+4. Repeat 10 times.
+5. Diplay in html test form.
+6. Display answer table after clicking answer button.
+7. Mark wronged words in table with red color
